@@ -23,11 +23,11 @@ Specifically in this code-along, we'll connect HTML forms to a Sinatra applicati
 
 Fork and clone this lesson. There are tests to make sure you're on track.
 
-Let's take a quick tour of the starter code. Open `app.rb`. The only route in our application responds to a `get` request to the `/food_form` URL by rendering the HTML in `food.erb`. We'll be working with `app.rb` (also called our Application Controller), and `food_form.erb` in the `views` directory. 
+Let's take a quick tour of the starter code. Open `app.rb`. The only route in our application responds to a `get` request to the `/food_form` URL by rendering the HTML in `food.erb`. We'll be working with `app.rb` (also called our Application Controller), and `food_form.erb` in the `views` directory.
 
 ### Starting Your Application
 
-To start this ruby web application, type `shotgun` in the root of this lesson's directory. 
+To start this ruby web application, type `shotgun` in the root of this lesson's directory.
 
 ### The Favorite Foods Form
 
@@ -53,7 +53,7 @@ We're not going to dive too deep into form-making here, but the basics are:
 <input type="submit">
 ```
 
-That's all a basic form needs! 
+That's all a basic form needs!
 
 #### Our First Form
 
@@ -77,7 +77,7 @@ Now if you run `shotgun` and go to the corresponding view (`localhost:9393/food_
 
 If you try submitting the form, nothing will happen. That's because the form is not yet connected to our Application Controller in `app.rb`. There is nothing telling the form to send the user's data to our application.
 
-In order to connect the form to our application, we need to give it explicit directions on **where** and **how** to send the data from the user. Both of these pieces of data are attributes that we give our `<form>` tag. 
+In order to connect the form to our application, we need to give it explicit directions on **where** and **how** to send the data from the user. Both of these pieces of data are attributes that we give our `<form>` tag.
 
 ```
 <form method="POST" action="/food">
@@ -87,7 +87,7 @@ In order to connect the form to our application, we need to give it explicit dir
 
 + The `action` attribute tells the form what specific route the post request should be sent to. In this case, we're posting to a route called `/food`
 
-Each form field `<input>` also must define a `name` attribute. The `name` attribute of an `<input>` defines how our application will identify each `<input>` data. 
+Each form field `<input>` also must define a `name` attribute. The `name` attribute of an `<input>` defines how our application will identify each `<input>` data.
 
 **Update the form in `views/food_form.erb` to:**
 
@@ -107,7 +107,7 @@ We get a Sinatra error! This is great news. Sinatra errors tell us exactly what 
 
 ## Post Routes and Params
 
-The error message Sinatra gives us is telling us that we don't have a route to receive the data from the HTML form that we created in `food_form.erb`. 
+The error message Sinatra gives us is telling us that we don't have a route to receive the data from the HTML form that we created in `food_form.erb`.
 
 If you recall, we gave our form a method attribute of `POST` and an `action` attribute of `"/food"`. Again, this is the **how** and **where** the data goes from this form.
 
@@ -128,7 +128,7 @@ If you create a text field input with `<input type="text" name="favorite_food">`
 This is because we will be passing our data in the form of a hash, where the key will be the name of the data, and the value will be the data itself. In this case, we want our hash (which we call `params`) to look something like this:
 
 ```ruby
-params = { 
+params = {
   :name => "Sam",
   :favorite_food => "Green Eggs and Ham"
 }
@@ -152,7 +152,7 @@ When you submit your form, you should now see the contents of `params` displayed
 {"name"=>"Sam", "favorite_food"=>"Green Eggs and Ham"}
 ```
 
-Great! This means you've been able to successfully get the data from the form in to the controller, and can now manipulate it any way you want. 
+Great! This means you've been able to successfully get the data from the form in to the controller, and can now manipulate it any way you want.
 
 Let's use the key-value pairs in `params` to return the following phrase, using good-old string interpolation:
 
@@ -170,7 +170,7 @@ post '/food' do
 end
 ```
 
-Submit the form and see what happens! If you've gotten this far you can successfully connect an HTML form to your Sinatra app, and can use the params hash to use and manipulate data from the user. 
+Submit the form and see what happens! If you've gotten this far you can successfully connect an HTML form to your Sinatra app, and can use the params hash to use and manipulate data from the user.
 
 <p data-visibility='hidden'>View <a href='https://learn.co/lessons/sinatra-forms-params-readme-walkthrough' title='HTML Forms and Params'>HTML Forms and Params</a> on Learn.co and start learning to code for free.</p>
 
